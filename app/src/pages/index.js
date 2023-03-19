@@ -69,11 +69,12 @@ export default function Home() {
       // Even though it is a read transaction, since Signers are just special kinds of Providers,
       // We can use it in it's place
       const signer = await getProviderOrSigner(true);
-      const whitelistContract = new Contract({
+      const whitelistContract = new Contract(
         WHITELIST_CONTRACT_ADDRESS,
         abi,
         signer
-      });
+      );
+      console.log("got here")
       // Get the address associated to the signer which is connected to  MetaMask
       const address = await signer.getAddress();
       // call the whitelistedAddresses from the contract
@@ -95,15 +96,15 @@ export default function Home() {
       const provider = await getProviderOrSigner();
       // We connect to the Contract using a Provider, so we will only
       // have read-only access to the Contract
-      const whitelistContract = new Contract({
+      const whitelistContract = new Contract(
         WHITELIST_CONTRACT_ADDRESS,
         abi,
         provider,
-      })
+      )
 
        // call the numAddressesWhitelisted from the contract
        const _numberOfWhitelisted = await whitelistContract.numAddressesWhitelisted();
-     setNumOfWhitelisted(_numberOfWhitelisted);
+       setNumOfWhitelisted(_numberOfWhitelisted);
 
     }catch(err){
       console.log(err);
