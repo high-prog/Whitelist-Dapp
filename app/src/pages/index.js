@@ -50,7 +50,7 @@ export default function Home() {
       }
 
       if (needSigner) {
-        const signer = web3Provider.getSigner();
+        const signer = await web3Provider.getSigner();
         return signer;
       }
       return web3Provider;
